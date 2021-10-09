@@ -99,6 +99,9 @@
 		D1C94CF92711220300D9D7B9 /* onTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				D1D573EC2711D44F00785E1F /* Network */,
+				D1D573EB2711D2A000785E1F /* Controller */,
+				D1D573EA2711D28300785E1F /* Model */,
 				D1C94CFA2711220300D9D7B9 /* AppDelegate.swift */,
 				D1C94CFC2711220300D9D7B9 /* SceneDelegate.swift */,
 				D1C94CFE2711220300D9D7B9 /* ViewController.swift */,
@@ -125,6 +128,27 @@
 				D1C94D1D2711220500D9D7B9 /* onTheMapUITestsLaunchTests.swift */,
 			);
 			path = onTheMapUITests;
+			sourceTree = "<group>";
+		};
+		D1D573EA2711D28300785E1F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D1D573EB2711D2A000785E1F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D1D573EC2711D44F00785E1F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
