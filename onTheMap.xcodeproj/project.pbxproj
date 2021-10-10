@@ -18,6 +18,10 @@
 		D1C94D1E2711220500D9D7B9 /* onTheMapUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1C94D1D2711220500D9D7B9 /* onTheMapUITestsLaunchTests.swift */; };
 		D1D573EE2711E03600785E1F /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573ED2711E03600785E1F /* NetworkHelper.swift */; };
 		D1D573F02711E12E00785E1F /* ServiceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573EF2711E12E00785E1F /* ServiceClient.swift */; };
+		D1D573F2271243C300785E1F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573F1271243C300785E1F /* LoginResponse.swift */; };
+		D1D573F4271243DC00785E1F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573F3271243DC00785E1F /* Account.swift */; };
+		D1D573F62712470100785E1F /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573F52712470100785E1F /* Session.swift */; };
+		D1D573F82712552C00785E1F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1D573F72712552C00785E1F /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		D1C94D1D2711220500D9D7B9 /* onTheMapUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onTheMapUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		D1D573ED2711E03600785E1F /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		D1D573EF2711E12E00785E1F /* ServiceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceClient.swift; sourceTree = "<group>"; };
+		D1D573F1271243C300785E1F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		D1D573F3271243DC00785E1F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		D1D573F52712470100785E1F /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		D1D573F72712552C00785E1F /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +144,10 @@
 		D1D573EA2711D28300785E1F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D1D573F1271243C300785E1F /* LoginResponse.swift */,
+				D1D573F3271243DC00785E1F /* Account.swift */,
+				D1D573F52712470100785E1F /* Session.swift */,
+				D1D573F72712552C00785E1F /* UserProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -290,9 +302,13 @@
 			files = (
 				D1D573F02711E12E00785E1F /* ServiceClient.swift in Sources */,
 				D1D573EE2711E03600785E1F /* NetworkHelper.swift in Sources */,
+				D1D573F2271243C300785E1F /* LoginResponse.swift in Sources */,
 				D1C94CFF2711220300D9D7B9 /* LoginViewController.swift in Sources */,
+				D1D573F62712470100785E1F /* Session.swift in Sources */,
 				D1C94CFB2711220300D9D7B9 /* AppDelegate.swift in Sources */,
 				D1C94CFD2711220300D9D7B9 /* SceneDelegate.swift in Sources */,
+				D1D573F4271243DC00785E1F /* Account.swift in Sources */,
+				D1D573F82712552C00785E1F /* UserProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
