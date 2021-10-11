@@ -55,23 +55,29 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="92.410714285714278"/>
         </scene>
-        <!--Item 2-->
+        <!--View Controller-->
         <scene sceneID="Dbe-D4-spM">
             <objects>
                 <viewController id="5e4-pq-pgG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vqI-wt-G3S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kBO-4e-LBC">
+                                <rect key="frame" x="20" y="20" width="382" height="739"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Rso-ZT-qOD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="m0t-EC-g2O"/>
+                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="m0t-EC-g2O"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zp-CO-SIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2229" y="489"/>
+            <point key="canvasLocation" x="2228.985507246377" y="488.83928571428567"/>
         </scene>
-        <!--Item 1-->
+        <!--View Controller-->
         <scene sceneID="Wwx-at-pA8">
             <objects>
                 <viewController id="lPb-nJ-gan" sceneMemberID="viewController">
@@ -81,7 +87,7 @@
                         <viewLayoutGuide key="safeArea" id="HTI-WY-xdx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="OEe-6w-3Tz"/>
+                    <tabBarItem key="tabBarItem" title="" image="mappin.circle" catalog="system" id="OEe-6w-3Tz"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNj-Mu-JVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -108,6 +114,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
