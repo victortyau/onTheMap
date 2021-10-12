@@ -18,10 +18,12 @@ class ServiceClient {
         static let baseUrl = "https://onthemap-api.udacity.com/v1"
         
         case classicLogin
+        case fetchStudentLocations
         
         var stringValue: String {
             switch self {
                 case .classicLogin: return Endpoints.baseUrl + "/session"
+                case .fetchStudentLocations: return Endpoints.baseUrl + "/StudentLocation?limit=100"
             }
         }
         
@@ -42,4 +44,17 @@ class ServiceClient {
             }
         }
     }
+    
+    class func fetchStudentLocations(completion: @escaping([StudentInformation]?, Error?) -> Void) {
+        NetworkHelper.taskForGETRequest(url: Endpoints.fetchStudentLocations.url, responseType: StudentsLocation.self){
+            response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
+            }
+        }
+    }
+    
+    
 }

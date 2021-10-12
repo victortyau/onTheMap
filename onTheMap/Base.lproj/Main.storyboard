@@ -48,74 +48,132 @@
                         <outlet property="loginButton" destination="Lsj-5Y-H7C" id="DKz-2i-ukc"/>
                         <outlet property="passwordTextField" destination="tHX-E8-EFm" id="Uae-Ol-1lO"/>
                         <outlet property="usernameTextField" destination="p6n-4k-7YK" id="foH-YK-3lX"/>
-                        <segue destination="WYE-vK-yo4" kind="show" identifier="logged" id="jbr-7S-OLC"/>
+                        <segue destination="JDM-Yu-IRg" kind="showDetail" identifier="logged" id="lxJ-PY-Eoz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="92.410714285714278"/>
+            <point key="canvasLocation" x="619" y="69"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Dbe-D4-spM">
+        <!--List-->
+        <scene sceneID="jwr-lE-SYz">
             <objects>
-                <viewController id="5e4-pq-pgG" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vqI-wt-G3S">
+                <viewController id="kX2-vP-QPZ" customClass="ListViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cDW-l0-YY2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kBO-4e-LBC">
-                                <rect key="frame" x="20" y="20" width="382" height="739"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LHG-Zn-tSb">
+                                <rect key="frame" x="20" y="56" width="374" height="703"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </stackView>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="list_item" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="list_item" id="XHK-X7-HRF">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XHK-X7-HRF" id="1SX-ND-SEg">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Rso-ZT-qOD"/>
+                        <viewLayoutGuide key="safeArea" id="0LE-rH-Axs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="list.dash" catalog="system" id="m0t-EC-g2O"/>
+                    <navigationItem key="navigationItem" title="List" id="2Ep-sF-utZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="LHG-Zn-tSb" id="SEJ-va-ZKP"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8zp-CO-SIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ5-Xq-oGV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228.985507246377" y="488.83928571428567"/>
+            <point key="canvasLocation" x="3944.9275362318845" y="-530.35714285714289"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Wwx-at-pA8">
+        <!--Map-->
+        <scene sceneID="4Df-od-0ib">
             <objects>
-                <viewController id="lPb-nJ-gan" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="DHb-Kg-jde">
+                <viewController id="WN3-F8-UOe" customClass="MapViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AGe-C3-KK2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="HTI-WY-xdx"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GLW-tE-WVs">
+                                <rect key="frame" x="20" y="56" width="374" height="757"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fJC-9I-jWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="mappin.circle" catalog="system" id="OEe-6w-3Tz"/>
+                    <navigationItem key="navigationItem" title="Map" id="VPJ-qC-HmV"/>
+                    <connections>
+                        <outlet property="mapView" destination="GLW-tE-WVs" id="yW9-3e-L9Z"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mNj-Mu-JVt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZwH-ZQ-0Es" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2230" y="-210"/>
+            <point key="canvasLocation" x="3944.9275362318845" y="458.70535714285711"/>
         </scene>
         <!--Tab Bar Controller-->
-        <scene sceneID="mlq-O6-5R8">
+        <scene sceneID="33S-Pv-HpT">
             <objects>
-                <tabBarController id="WYE-vK-yo4" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="fGb-3M-U7i"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4fi-tG-988">
+                <tabBarController id="JDM-Yu-IRg" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1MJ-QZ-2CW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="lPb-nJ-gan" kind="relationship" relationship="viewControllers" id="M1M-lt-jQl"/>
-                        <segue destination="5e4-pq-pgG" kind="relationship" relationship="viewControllers" id="gyq-UI-NrF"/>
+                        <segue destination="dvl-7V-PMN" kind="relationship" relationship="viewControllers" id="hNt-wi-gBw"/>
+                        <segue destination="TTS-KL-TSw" kind="relationship" relationship="viewControllers" id="YBS-Ag-EW3"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zsY-ww-A9V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezG-lQ-P3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="92"/>
+            <point key="canvasLocation" x="1838" y="69"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="nAf-tI-NTN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TTS-KL-TSw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 2" id="ROg-y8-blD"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nGh-aw-ctw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kX2-vP-QPZ" kind="relationship" relationship="rootViewController" id="UAx-v1-nwg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gzp-Gz-KJt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3034.7826086956525" y="-530.35714285714289"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="VmS-Yd-1VU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dvl-7V-PMN" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 1" id="edD-DA-9qA"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8n0-rh-kxo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WN3-F8-UOe" kind="relationship" relationship="rootViewController" id="cnS-pZ-P7e"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MSA-pa-X7w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3034.7826086956525" y="458.70535714285711"/>
         </scene>
     </scenes>
     <resources>
-        <image name="list.dash" catalog="system" width="128" height="85"/>
-        <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
