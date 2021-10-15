@@ -24,6 +24,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         fetchStudentsPins()
     }
     
+    @IBAction func logout(_ sender: Any) {
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+    }
+    
+    @IBAction func addLocation(_ sender: Any) {
+    }
+    
+    
     func fetchStudentsPins() {
         ServiceClient.fetchStudentLocations() {
             locations, error in

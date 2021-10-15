@@ -24,6 +24,16 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         fetchStudentList()
     }
     
+    @IBAction func logout(_ sender: Any) {
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
+    }
+    
+    @IBAction func addLocation(_ sender: Any) {
+    }
+    
+    
     func fetchStudentList() {
         ServiceClient.fetchStudentLocations() { students, error in
             self.students = students ?? []

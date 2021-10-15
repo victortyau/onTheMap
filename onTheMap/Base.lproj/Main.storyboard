@@ -35,14 +35,37 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="login" label="login"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="LOG IN"/>
+                                <buttonConfiguration key="configuration" style="plain" title="LOG IN">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Dmj-oU-7kY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmr-lr-Wxi">
+                                <rect key="frame" x="68" y="506" width="179" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9Z-jk-eWm">
+                                <rect key="frame" x="248" y="501" width="102" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sign Up"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-u" highlightedImage="logo-u" translatesAutoresizingMaskIntoConstraints="NO" id="B1Z-yT-65x">
+                                <rect key="frame" x="89" y="125" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="tintColor" systemColor="tintColor"/>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Lsj-5Y-H7C" id="DKz-2i-ukc"/>
@@ -53,9 +76,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="69"/>
+            <point key="canvasLocation" x="618.84057971014499" y="68.973214285714278"/>
         </scene>
-        <!--List-->
+        <!--On the Map-->
         <scene sceneID="jwr-lE-SYz">
             <objects>
                 <viewController id="kX2-vP-QPZ" customClass="ListViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -82,7 +105,29 @@
                         <viewLayoutGuide key="safeArea" id="0LE-rH-Axs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="List" id="2Ep-sF-utZ"/>
+                    <toolbarItems>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="4SI-gl-GTS"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="On the Map" id="2Ep-sF-utZ">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" style="done" id="u00-LP-Gd0">
+                            <connections>
+                                <action selector="logout:" destination="kX2-vP-QPZ" id="MTx-OK-ngP"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="icon_addpin" id="QAL-dS-GEs">
+                                <connections>
+                                    <action selector="addLocation:" destination="kX2-vP-QPZ" id="mNk-8f-Jlv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="icon_refresh" id="f7h-1x-CGo">
+                                <connections>
+                                    <action selector="refresh:" destination="kX2-vP-QPZ" id="dJw-Za-Nc3"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="LHG-Zn-tSb" id="SEJ-va-ZKP"/>
                     </connections>
@@ -115,9 +160,15 @@
                                 <rect key="frame" x="59" y="557" width="300" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="FIND LOCATION">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="addLocation:" destination="fdB-yb-KoJ" eventType="touchUpInside" id="TsB-mk-0AE"/>
+                                    <action selector="findLocation:" destination="fdB-yb-KoJ" eventType="touchUpInside" id="hoW-B2-6Nm"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B5M-1C-7tn">
@@ -164,7 +215,12 @@
                                 <rect key="frame" x="60" y="749" width="300" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="FINISH">
+                                    <backgroundConfiguration key="background">
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                    </backgroundConfiguration>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="addLocation:" destination="uHQ-0f-74d" eventType="touchUpInside" id="NQi-u6-U43"/>
                                 </connections>
@@ -182,7 +238,7 @@
             </objects>
             <point key="canvasLocation" x="5862.3188405797109" y="-26.116071428571427"/>
         </scene>
-        <!--Map-->
+        <!--On the Map-->
         <scene sceneID="4Df-od-0ib">
             <objects>
                 <viewController id="WN3-F8-UOe" customClass="MapViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
@@ -198,7 +254,29 @@
                         <viewLayoutGuide key="safeArea" id="fJC-9I-jWL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map" id="VPJ-qC-HmV"/>
+                    <toolbarItems>
+                        <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="QjM-Hw-MoV"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="On the Map" id="VPJ-qC-HmV">
+                        <barButtonItem key="leftBarButtonItem" title="LOGOUT" style="done" id="rzd-G4-dwa">
+                            <connections>
+                                <action selector="logout:" destination="WN3-F8-UOe" id="KAV-yL-GgS"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="icon_addpin" id="jUt-vY-viK">
+                                <connections>
+                                    <action selector="addLocation:" destination="WN3-F8-UOe" id="8y2-ie-wfy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="icon_refresh" id="BOH-B9-SfG">
+                                <connections>
+                                    <action selector="refresh:" destination="WN3-F8-UOe" id="a0P-DN-ouV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="GLW-tE-WVs" id="yW9-3e-L9Z"/>
                     </connections>
@@ -225,11 +303,11 @@
             </objects>
             <point key="canvasLocation" x="1838" y="69"/>
         </scene>
-        <!--Item 2-->
+        <!--Navigation Controller-->
         <scene sceneID="nAf-tI-NTN">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TTS-KL-TSw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="ROg-y8-blD"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_listview-deselected" id="ROg-y8-blD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nGh-aw-ctw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -244,11 +322,11 @@
             </objects>
             <point key="canvasLocation" x="3034.7826086956525" y="-530.35714285714289"/>
         </scene>
-        <!--Item 1-->
+        <!--Navigation Controller-->
         <scene sceneID="VmS-Yd-1VU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dvl-7V-PMN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="edD-DA-9qA"/>
+                    <tabBarItem key="tabBarItem" title="" image="icon_mapview-deselected" id="edD-DA-9qA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8n0-rh-kxo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -265,8 +343,19 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_addpin" width="24" height="24"/>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icon_refresh" width="24" height="24"/>
+        <image name="logo-u" width="62" height="62"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
