@@ -25,15 +25,17 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logout(_ sender: Any) {
+        ServiceClient.classicLogout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func refresh(_ sender: Any) {
+        fetchStudentsPins()
     }
-    
-    @IBAction func addLocation(_ sender: Any) {
-    }
-    
-    
+  
     func fetchStudentsPins() {
         ServiceClient.fetchStudentLocations() {
             locations, error in

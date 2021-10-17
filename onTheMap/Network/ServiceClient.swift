@@ -19,11 +19,13 @@ class ServiceClient {
         
         case classicLogin
         case fetchStudentLocations
+        case signUpLink
         
         var stringValue: String {
             switch self {
                 case .classicLogin: return Endpoints.baseUrl + "/session"
                 case .fetchStudentLocations: return Endpoints.baseUrl + "/StudentLocation?limit=100"
+                case .signUpLink: return "https://auth.udacity.com/sign-up"
             }
         }
         
@@ -56,5 +58,28 @@ class ServiceClient {
         }
     }
     
-    
+    class func classicLogout(completion: @escaping () -> Void) {
+        var request = URLRequest(url: Endpoints.classicLogin.url)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+          if error != nil {
+              return
+          }
+          let range = 5..<data!.count
+          let newData = data?.subdata(in: range)
+          print(String(data: newData!, encoding: .utf8)!)
+          Auth.sessionId = ""
+          completion()
+        }
+        task.resume()
+    }
 }

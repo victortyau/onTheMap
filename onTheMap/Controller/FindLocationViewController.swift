@@ -18,5 +18,6 @@ class FindLocationViewController: UIViewController {
     }
     
     @IBAction func addLocation(_ sender: Any) {
+        
     }
 }

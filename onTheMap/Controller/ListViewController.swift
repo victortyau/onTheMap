@@ -25,14 +25,16 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func logout(_ sender: Any) {
+        ServiceClient.classicLogout {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func refresh(_ sender: Any) {
+        fetchStudentList()
     }
-    
-    @IBAction func addLocation(_ sender: Any) {
-    }
-    
     
     func fetchStudentList() {
         ServiceClient.fetchStudentLocations() { students, error in

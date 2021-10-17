@@ -18,9 +18,6 @@ class AddLocationViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    
-    
-    
     @IBAction func addLocation(_ sender: Any) {
         let newLocation = locationTextField.text
         
@@ -29,6 +26,9 @@ class AddLocationViewController: UIViewController {
             return
         }
         setGeocodePosition(newLocation: newLocation ?? "")
+    }
+    
+    @IBAction func cancelAddLocation(_ sender: Any) {
     }
     
     func setGeocodePosition(newLocation: String) {
