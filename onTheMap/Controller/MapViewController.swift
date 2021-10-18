@@ -14,9 +14,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     var locations = [StudentInformation]()
     var annotations = [MKPointAnnotation]()
+    var currentIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentIndicator = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.medium)
+        setupIndicator(currentIndicator: currentIndicator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,9 +28,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logout(_ sender: Any) {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         ServiceClient.classicLogout {
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
+                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
             }
         }
     }
@@ -37,6 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
   
     func fetchStudentsPins() {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         ServiceClient.fetchStudentLocations() {
             locations, error in
             self.mapView.removeAnnotations(self.annotations)
@@ -55,6 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
             DispatchQueue.main.async {
                 self.mapView.addAnnotations(self.annotations)
+                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
             }
         }
     }
@@ -71,15 +78,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         } else {
             pinView!.annotation = annotation
         }
-        
         return pinView
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
-                app.canOpenURL(URL(string: toOpen)!)
+                openLink(toOpen)
             }
         }
     }

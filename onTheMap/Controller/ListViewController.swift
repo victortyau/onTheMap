@@ -12,11 +12,14 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var tableView: UITableView!
     
     var students = [StudentInformation]()
+    var currentIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        currentIndicator = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.medium)
+        setupIndicator(currentIndicator: currentIndicator)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -25,9 +28,11 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @IBAction func logout(_ sender: Any) {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         ServiceClient.classicLogout {
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
+                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
             }
         }
     }
@@ -37,10 +42,12 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func fetchStudentList() {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         ServiceClient.fetchStudentLocations() { students, error in
             self.students = students ?? []
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
             }
         }
     }

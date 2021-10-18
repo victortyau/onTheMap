@@ -13,8 +13,45 @@ class FindLocationViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addLocationButton: UIButton!
     
+    var studentInformation: StudentInformation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let studentLocation = studentInformation {
+            let studentLocation = Location(
+                objectId: studentLocation.objectId ?? "",
+                uniqueKey: studentLocation.uniqueKey,
+                firstName: studentLocation.firstName,
+                lastName: studentLocation.lastName,
+                mapString: studentLocation.mapString,
+                mediaURL: studentLocation.mediaURL,
+                latitude: studentLocation.latitude,
+                longitude: studentLocation.longitude,
+                createdAt: studentLocation.createdAt ?? "",
+                updatedAt: studentLocation.updatedAt ?? ""
+            )
+            displayLocation(location: studentLocation)
+        }
+    }
+    
+    func displayLocation(location: Location) {
+        mapView.removeAnnotations(mapView.annotations)
+        if let coordinate = extractCoordinate(location: location) {
+            let annotation = MKPointAnnotation()
+            annotation.title = "\(location.firstName ?? "") \(location.lastName ?? "")"
+            annotation.subtitle = location.mediaURL ?? ""
+            annotation.coordinate = coordinate
+            mapView.addAnnotation(annotation)
+            mapView.showAnnotations(mapView.annotations, animated: true)
+        }
+    }
+    
+    func extractCoordinate(location: Location) -> CLLocationCoordinate2D? {
+        if let lat = location.latitude, let lon = location.longitude {
+            return CLLocationCoordinate2DMake(lat, lon)
+        }
+        return nil
     }
     
     @IBAction func addLocation(_ sender: Any) {
