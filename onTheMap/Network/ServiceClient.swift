@@ -22,7 +22,7 @@ class ServiceClient {
         case fetchStudentLocations
         case signUpLink
         case addLocation
-        case updateLocation
+        //case updateLocation
         
         var stringValue: String {
             switch self {
@@ -30,7 +30,7 @@ class ServiceClient {
                 case .fetchStudentLocations: return Endpoints.baseUrl + "/StudentLocation?limit=100&order=-createdAt"
                 case .signUpLink: return "https://auth.udacity.com/sign-up"
                 case .addLocation: return Endpoints.baseUrl + "/StudentLocation"
-                case .updateLocation: return Endpoints.baseUrl + "/StudentLocation/" + Auth.objectId
+                //case .updateLocation: return Endpoints.baseUrl + "/StudentLocation/" + Auth.objectId
             }
         }
         
@@ -86,5 +86,17 @@ class ServiceClient {
           completion()
         }
         task.resume()
+    }
+    
+    class func addLocation(studentInformation: StudentInformation, completion: @escaping (Bool, Error?) -> Void) {
+        let body = "{\"uniqueKey\": \"\(studentInformation.uniqueKey ?? "")\", \"firstName\": \"\(studentInformation.firstName)\", \"lastName\": \"\(studentInformation.lastName)\",\"mapString\": \"\(studentInformation.mapString ?? "")\", \"mediaURL\": \"\(studentInformation.mediaURL ?? "")\",\"latitude\": \(studentInformation.latitude ?? 0.0), \"longitude\": \(studentInformation.longitude ?? 0.0)}"
+        NetworkHelper.taskForPOSTRequest(url: Endpoints.addLocation.url, responseType: PostLocationResponse.self, body: body, httpMethod: "POST") {
+            response, error in
+            if let response = response, response.createdAt != nil {
+                Auth.objectId = response.objectId ?? ""
+                completion(true, nil)
+            }
+            completion(false, error)
+        }
     }
 }

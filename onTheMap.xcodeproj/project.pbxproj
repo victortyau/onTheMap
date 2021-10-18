@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D192D8A8271D323E00D24BAD /* PostLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192D8A7271D323E00D24BAD /* PostLocationResponse.swift */; };
+		D192D8AA271D326E00D24BAD /* UpdateLocationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D192D8A9271D326E00D24BAD /* UpdateLocationResponse.swift */; };
 		D1AA05F6271A9B4000308A7D /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AA05F5271A9B4000308A7D /* extension.swift */; };
 		D1AB8F7F2715135D00F8830E /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB8F7E2715135D00F8830E /* StudentInformation.swift */; };
 		D1AB8F832715149B00F8830E /* StudentsLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1AB8F822715149B00F8830E /* StudentsLocation.swift */; };
@@ -51,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D192D8A7271D323E00D24BAD /* PostLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLocationResponse.swift; sourceTree = "<group>"; };
+		D192D8A9271D326E00D24BAD /* UpdateLocationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLocationResponse.swift; sourceTree = "<group>"; };
 		D1AA05F5271A9B4000308A7D /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		D1AB8F7E2715135D00F8830E /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		D1AB8F822715149B00F8830E /* StudentsLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsLocation.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				D1AB8F7E2715135D00F8830E /* StudentInformation.swift */,
 				D1AB8F822715149B00F8830E /* StudentsLocation.swift */,
 				D1AB8F842715332000F8830E /* Location.swift */,
+				D192D8A7271D323E00D24BAD /* PostLocationResponse.swift */,
+				D192D8A9271D326E00D24BAD /* UpdateLocationResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -329,8 +335,10 @@
 			files = (
 				D1C4B02A2714A540002DF538 /* StudentViewController.swift in Sources */,
 				D1C4B0282714A450002DF538 /* MapViewController.swift in Sources */,
+				D192D8AA271D326E00D24BAD /* UpdateLocationResponse.swift in Sources */,
 				D1D573F02711E12E00785E1F /* ServiceClient.swift in Sources */,
 				D1AA05F6271A9B4000308A7D /* extension.swift in Sources */,
+				D192D8A8271D323E00D24BAD /* PostLocationResponse.swift in Sources */,
 				D1D573EE2711E03600785E1F /* NetworkHelper.swift in Sources */,
 				D1D573F2271243C300785E1F /* LoginResponse.swift in Sources */,
 				D1AB8F832715149B00F8830E /* StudentsLocation.swift in Sources */,
