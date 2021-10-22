@@ -55,6 +55,21 @@ class FindLocationViewController: UIViewController {
     }
     
     @IBAction func addLocation(_ sender: Any) {
-        
+        if let studentLocation = studentInformation {
+            if ServiceClient.Auth.objectId == "" {
+                ServiceClient.addLocation(studentInformation: studentLocation){
+                    success, error in
+                    if success {
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            self.alertBox(title: "Error", message: error?.localizedDescription ?? "")
+                        }
+                    }
+                }
+            }
+        }
     }
 }

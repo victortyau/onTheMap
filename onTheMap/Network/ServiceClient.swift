@@ -27,7 +27,7 @@ class ServiceClient {
         var stringValue: String {
             switch self {
                 case .classicLogin: return Endpoints.baseUrl + "/session"
-                case .fetchStudentLocations: return Endpoints.baseUrl + "/StudentLocation?limit=100&order=-createdAt"
+                case .fetchStudentLocations: return Endpoints.baseUrl + "/StudentLocation?limit=100&order=-updatedAt"
                 case .signUpLink: return "https://auth.udacity.com/sign-up"
                 case .addLocation: return Endpoints.baseUrl + "/StudentLocation"
                 //case .updateLocation: return Endpoints.baseUrl + "/StudentLocation/" + Auth.objectId
