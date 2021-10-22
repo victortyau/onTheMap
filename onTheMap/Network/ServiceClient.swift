@@ -47,7 +47,7 @@ class ServiceClient {
                 Auth.key = response.account.key
                 completion(true, nil)
             } else {
-                completion(false, nil)
+                completion(false, error)
             }
         }
     }
