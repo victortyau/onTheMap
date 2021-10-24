@@ -88,4 +88,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        openLink((view.annotation?.subtitle ?? "") ?? "")
+    }
 }

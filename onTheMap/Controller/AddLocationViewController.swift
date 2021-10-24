@@ -13,16 +13,24 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var websiteTextField: UITextField!
     @IBOutlet weak var lookLocationButton: UIButton!
+    var currentIndicator: UIActivityIndicatorView!
     
     var objectId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationTextField.text = "Panama city, Panama"
-        websiteTextField.text = "https://www.wacom.com/en-us"
+        currentIndicator = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.medium)
+        setupIndicator(currentIndicator: currentIndicator)
+        locationTextField.text = "Obarrio, Panama, Panama"
+        websiteTextField.text = "https://classic.yarnpkg.com/lang/en/"
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.hideActivityIndicator(currentIndicator: self.currentIndicator)
     }
     
     @IBAction func searchLocation(_ sender: UIButton) {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         let newLocation = locationTextField.text
         
         guard let url = URL(string: self.websiteTextField.text!), UIApplication.shared.canOpenURL(url) else {
@@ -40,6 +48,7 @@ class AddLocationViewController: UIViewController {
     func setGeocodePosition(newLocation: String) {
         CLGeocoder().geocodeAddressString(newLocation) { newMarker, error in
             if let error = error {
+                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
                 self.alertBox(title: "Location not found", message: error.localizedDescription)
             } else {
                 var location: CLLocation?
@@ -51,6 +60,7 @@ class AddLocationViewController: UIViewController {
                 if let location = location {
                     self.loadLocation(location.coordinate)
                 } else {
+                    self.hideActivityIndicator(currentIndicator: self.currentIndicator)
                     self.alertBox(title: "Error", message: "Please try again")
                 }
             }
@@ -61,6 +71,7 @@ class AddLocationViewController: UIViewController {
         let controller = storyboard!.instantiateViewController(withIdentifier: "FindLocationController") as! FindLocationViewController
         controller.studentInformation = createStudentInfo(coordinate)
         self.navigationController!.pushViewController(controller, animated: true)
+        self.hideActivityIndicator(currentIndicator: self.currentIndicator)
     }
     
     func createStudentInfo(_ coordinate: CLLocationCoordinate2D) -> StudentInformation {

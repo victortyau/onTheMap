@@ -33,7 +33,7 @@ class NetworkHelper {
         task.resume()
     }
     
-    class func taskForPOSTRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: String, httpMethod: String, completion: @escaping (ResponseType?, Error?) -> Void) {
+    class func taskForPOSTRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: String, httpMethod: String, apiType: String , completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -48,11 +48,18 @@ class NetworkHelper {
             }
             
             do {
-                let range = 5..<data.count
-                let newData = data.subdata(in: range)
-                let responseObject = try JSONDecoder().decode(ResponseType.self, from: newData)
-                DispatchQueue.main.async {
-                    completion(responseObject, nil)
+                if apiType == "udacity"{
+                    let range = 5..<data.count
+                    let newData = data.subdata(in: range)
+                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: newData)
+                    DispatchQueue.main.async {
+                        completion(responseObject, nil)
+                    }
+                } else {
+                    let responseObject = try JSONDecoder().decode(ResponseType.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(responseObject, nil)
+                    }
                 }
             } catch {
                 DispatchQueue.main.async {

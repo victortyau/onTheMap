@@ -12,11 +12,14 @@ class FindLocationViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var addLocationButton: UIButton!
+    var currentIndicator: UIActivityIndicatorView!
     
     var studentInformation: StudentInformation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentIndicator = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.medium)
+        setupIndicator(currentIndicator: currentIndicator)
         
         if let studentLocation = studentInformation {
             let studentLocation = Location(
@@ -55,6 +58,7 @@ class FindLocationViewController: UIViewController {
     }
     
     @IBAction func addLocation(_ sender: Any) {
+        displayActivityIndicator(currentIndicator: currentIndicator)
         if let studentLocation = studentInformation {
             if ServiceClient.Auth.objectId == "" {
                 ServiceClient.addLocation(studentInformation: studentLocation){
@@ -62,10 +66,13 @@ class FindLocationViewController: UIViewController {
                     if success {
                         DispatchQueue.main.async {
                             self.dismiss(animated: true, completion: nil)
+                            self.hideActivityIndicator(currentIndicator: self.currentIndicator)
                         }
                     } else {
                         DispatchQueue.main.async {
+                            self.hideActivityIndicator(currentIndicator: self.currentIndicator)
                             self.alertBox(title: "Error", message: error?.localizedDescription ?? "")
+                            
                         }
                     }
                 }

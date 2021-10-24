@@ -41,7 +41,7 @@ class ServiceClient {
     
     class func classicLogin(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let body = "{\"udacity\": {\"username\": \"\(username)\", \"password\": \"\(password)\"}}"
-        NetworkHelper.taskForPOSTRequest(url: Endpoints.classicLogin.url, responseType: LoginResponse.self, body: body, httpMethod: "POST"){ response, error in
+        NetworkHelper.taskForPOSTRequest(url: Endpoints.classicLogin.url, responseType: LoginResponse.self, body: body, httpMethod: "POST", apiType: "udacity"){ response, error in
             if let response = response {
                 Auth.sessionId = response.session.id
                 Auth.key = response.account.key
@@ -89,8 +89,10 @@ class ServiceClient {
     }
     
     class func addLocation(studentInformation: StudentInformation, completion: @escaping (Bool, Error?) -> Void) {
+        
         let body = "{\"uniqueKey\": \"\(studentInformation.uniqueKey ?? "")\", \"firstName\": \"\(studentInformation.firstName)\", \"lastName\": \"\(studentInformation.lastName)\",\"mapString\": \"\(studentInformation.mapString ?? "")\", \"mediaURL\": \"\(studentInformation.mediaURL ?? "")\",\"latitude\": \(studentInformation.latitude ?? 0.0), \"longitude\": \(studentInformation.longitude ?? 0.0)}"
-        NetworkHelper.taskForPOSTRequest(url: Endpoints.addLocation.url, responseType: PostLocationResponse.self, body: body, httpMethod: "POST") {
+        
+        NetworkHelper.taskForPOSTRequest(url: Endpoints.addLocation.url, responseType: PostLocationResponse.self, body: body, httpMethod: "POST",apiType: "") {
             response, error in
             if let response = response, response.createdAt != nil {
                 Auth.objectId = response.objectId ?? ""

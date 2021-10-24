@@ -62,5 +62,10 @@ class ListViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.textLabel?.text = student.firstName + " " + student.lastName
         cell.detailTextLabel?.text = student.mediaURL ?? ""
         return cell
-    }    
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let student = self.students[indexPath.row]
+        openLink(student.mediaURL ?? "")
+    }
 }
