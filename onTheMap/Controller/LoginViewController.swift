@@ -41,7 +41,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "logged", sender: nil)
             }
         } else {
-            alertBox(title: "login", message:  "The credentials were incorrect")
+            alertBox(title: "login", message:  error?.localizedDescription ?? "")
         }
     }
     

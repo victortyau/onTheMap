@@ -18,6 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mapView.delegate = self
         currentIndicator = UIActivityIndicatorView (style: UIActivityIndicatorView.Style.medium)
         setupIndicator(currentIndicator: currentIndicator)
     }
@@ -45,23 +46,29 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         displayActivityIndicator(currentIndicator: currentIndicator)
         ServiceClient.fetchStudentLocations() {
             locations, error in
-            self.mapView.removeAnnotations(self.annotations)
-            self.annotations.removeAll()
-            self.locations = locations ?? []
-            for location in locations ?? [] {
-                let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude ?? 0.0), longitude: CLLocationDegrees(location.longitude ?? 0.0))
-                let first_name = location.firstName
-                let last_name = location.lastName
-                let media_url = location.mediaURL
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title =  first_name+" "+last_name
-                annotation.subtitle = media_url
-                self.annotations.append(annotation)
-            }
-            DispatchQueue.main.async {
-                self.mapView.addAnnotations(self.annotations)
-                self.hideActivityIndicator(currentIndicator: self.currentIndicator)
+            
+            if locations!.count > 0 {
+                self.mapView.removeAnnotations(self.annotations)
+                self.annotations.removeAll()
+                self.locations = locations ?? []
+                
+                for location in locations ?? [] {
+                    let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(location.latitude ?? 0.0), longitude: CLLocationDegrees(location.longitude ?? 0.0))
+                    let first_name = location.firstName
+                    let last_name = location.lastName
+                    let media_url = location.mediaURL
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title =  first_name+" "+last_name
+                    annotation.subtitle = media_url
+                    self.annotations.append(annotation)
+                }
+                DispatchQueue.main.async {
+                    self.mapView.addAnnotations(self.annotations)
+                    self.hideActivityIndicator(currentIndicator: self.currentIndicator)
+                }
+            } else {
+                self.alertBox(title: "Error", message: "Problems to fetch locations")
             }
         }
     }
